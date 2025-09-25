@@ -12,6 +12,7 @@ int CentralMonitoramento::buscarSensorPorNome(const std::string& nome) const {
 
 // Tenta criar um sensor novo. Se já existir, avisa e não cria.
 bool CentralMonitoramento::adicionarSensor(const std::string& nome) {
+    //se o sensor já existir, não insere
     if (buscarSensorPorNome(nome) != -1) {
         std::cout << "[Aviso] Sensor \"" << nome << "\" já existe.\n";
         return false;
@@ -27,7 +28,7 @@ bool CentralMonitoramento::adicionarSensor(const std::string& nome) {
 bool CentralMonitoramento::inserirValorNoSensor(const std::string& nomeSensor, double valor) {
     int i = buscarSensorPorNome(nomeSensor);
     if (i == -1) {
-        std::cout << [Erro] Sensor \"" << nomeSensor << "\" inexistente.\n";
+        std::cout << "[Erro] Sensor \"" << nomeSensor << "\" inexistente.\n";
         return false;
     }
     sensores[i].adicionarValor(valor);
